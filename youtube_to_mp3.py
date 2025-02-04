@@ -91,7 +91,7 @@ def clean_files():
             left_bracket = file.index("[")
             right_bracket = file.index("]")
             new_name = file[:left_bracket-1] + file[right_bracket + 1:]
-            src = current_path + "\\" + file
+            src = current_path + "/" + file
             dst = download_path + new_name
 
             file_num = 1
@@ -109,6 +109,8 @@ def clean_files():
                 file_num = file_num + 1
 
             now = datetime.datetime.now().timestamp()
+            print(src)
+            print(dst)
             os.utime(src, (now, now))   #Changes the time modified and the time accessed to present
             os.rename(src, dst)     #renames and moves file
             print("The file was successfully downloaded")
