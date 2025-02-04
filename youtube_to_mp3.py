@@ -1,14 +1,13 @@
 import os
 import yt_dlp
 import datetime
+import platform
 
 """
 TODO LIST:
 
 - packaging (as .exe or as bundle of python like a zip)
 - tagging mp3. May want to use mutagen library for that
-- front end UI
-- Change it so the downloader file can be removed without errors and so that any .conf file will be read
 
 """
 
@@ -24,6 +23,10 @@ def youtube_to_mp3(video_id):
     (not sure what that is yet)
 
     ydl_opts is used for configuring the download parameters
+
+    :PARAMS: the youtube video url
+    :RETURNS: mp3 file in the same directory as the program
+
     """
 
     ydl_opts = {
@@ -51,21 +54,34 @@ def youtube_to_mp3(video_id):
 
 
 
-
 def clean_files():
     """
     Moves the file downloaded to the Downloads folder
 
+    Renames the default ouput from yt_dlp so the name does not contain brackets
+
     Had to change the date modified and date accessed because it was wrong
     and kept adding to the end of the Downloads folder
+
+    TODO fix the duplicate file naming code
     """
 
-
-    download_path = "C:/Users/"
     user = os.getlogin()
-    download_path = download_path + user + "/Downloads/"
-
     current_path = os.getcwd()
+
+    if platform.system() == "Windows":
+        print("Running on Windows")
+        download_path = "/Users/" + user + "/Downloads/"
+
+    elif platform.system() == "Linux":
+        print("Running on Linux")
+        download_path = "/home/" + user + "/Downloads/"
+
+    else:
+        print(platform.system())
+        print("Unsupported platform: Currently supported on only Linux and Windows")
+
+
 
     pwd = os.listdir()
     for file in pwd:
@@ -76,26 +92,19 @@ def clean_files():
             src = current_path + "\\" + file
             dst = download_path + new_name
 
-            # if os.path.exists(dst):
-            #     print("FAILED: There is already a file with the same name")
-            #     os.remove(src)
-            #     continue
-
-            x=1
-            while os.path.exists(dst):
-
-
-                if x == 1:
-                    x = str(x)
+            file_num = 1
+            while os.path.exists(dst):  #loop to rename file end if it already exists (ex filename(1).mp3)
+                if file_num == 1:
+                    file_num = str(file_num)
                     end = dst[-4:]
-                    dst = dst[:-4] + "(" + x + ")" + end
+                    dst = dst[:-4] + "(" + file_num + ")" + end
                 else:
-                    x = str(x)
+                    file_num = str(file_num)
                     end = dst[-5:]
-                    dst = dst[:-6] + x + end
+                    dst = dst[:-6] + file_num + end
 
-                x=int(x)
-                x=x+1
+                file_num = int(file_num)
+                file_num = file_num + 1
 
             now = datetime.datetime.now().timestamp()
             os.utime(src, (now, now))   #Changes the time modified and the time accessed to present
@@ -134,6 +143,12 @@ def read_config_file():
 
 
 def main():
+    """
+    DEPRICATED -- GUI REPLACES IT
+
+    Main program loop
+    """
+
     print("Youtube Audio Downloader")
     print("Use 'q' to exit and 'f' to specify the use of the downloader file \n")
 
@@ -150,4 +165,5 @@ def main():
         clean_files()
 
 if __name__ == "__main__":
+    clean_files()
     main()

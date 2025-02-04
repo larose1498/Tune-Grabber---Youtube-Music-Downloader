@@ -1,27 +1,31 @@
 """
-UI for youtube_to_mp3. Designed to allow youtube_to_mp3 to work independently.
+Tune-Grabber Main file. Designed to allow youtube_to_mp3 to work independently
+as CLI program. 
+
+USE OF DOWNLOADER FILE IS DEPRICATED.
 
 Not all events are shown in the event viewer. The console of the actual files still
-outputs however
+outputs however.
 
-
+Whenever writing to the event monitor be sure to enable the textbox, write, and then disable
+the textbox. 
 """
-
-
-
 
 import tkinter as tk
 import youtube_to_mp3
 import threading
 
 root = tk.Tk()
-root.title("YouTube to MP3")
+root.title("Tune Grabber")
 root.resizable(False, False)
 
 def parse_tb(urls):
     """
     Takes each url from the UI and parses it. Then
     calls the dowloader function for each URL
+
+    :PARAM: urls to youtube videos from the UI
+    :RETURNS: list of urls
     """
 
     urls = urls.replace(" ", "")
@@ -36,6 +40,13 @@ def download():
     """
 
     def run_yt():
+        """
+        Runs the youtube_to_mp3 file to handle the downloads and file cleaning
+
+        Because the threading library does not allow for returns on threads, a return 
+        list is initialized
+        """
+
         returns = []
         input = url_textbox.get("1.0", "end-1c")
         url_list = parse_tb(input)
@@ -67,7 +78,15 @@ def cancel():
 
 def display_status(url, **kwargs):
     """
-    Displays the status of the Download
+    Displays the status of the Download to the event monitor of the GUI.
+    *note that more information is printed in the terminal*
+
+
+    :PARAMS: 
+    - url: url of a given video
+    - success: success state, bool
+    - error: error message associated with download
+
     """
 
     if "success" in kwargs:
@@ -87,6 +106,12 @@ def display_status(url, **kwargs):
 
 
 def clear(text_box):
+    """
+    Clears the text box of any writing
+
+    :PARAMS: a given textbox: either event monitor or user input area
+    """
+
     if text_box == event_monitor:
         text_box.configure(state=tk.NORMAL)
         text_box.delete("1.0", tk.END)
@@ -94,6 +119,8 @@ def clear(text_box):
 
     if text_box == url_textbox:
         text_box.delete("1.0", tk.END)
+
+
 
 url_header = (tk.Label(root, text="Enter URLS below. Use a newline to separate"))
 url_header.grid(row=0, column=0, columnspan=3, sticky="nesw")
