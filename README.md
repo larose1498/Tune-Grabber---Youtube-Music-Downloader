@@ -29,7 +29,7 @@ Use the linux app with ffmpeg, ffplay, and ffprobe in the same directory, OR
 
 - cd into the directory with the files
   
-- run the command python3 UI.py.
+- run the command python3 Tune-Grabber.py.
 Optionally create script to automate last two steps.
 
 IF you are using Ubuntu, you may need to run
