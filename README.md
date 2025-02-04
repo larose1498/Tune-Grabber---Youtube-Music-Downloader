@@ -39,7 +39,7 @@ python3 Tune-Grabber.py
 
 Optionally create script to automate last two steps.
 
-IF YOU ARE USING UBUNTU, you may need to run
+#### IF YOU ARE USING UBUNTU, you may need to run
 ```
 sudo apt install python3-tk
 ```
