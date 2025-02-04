@@ -8,6 +8,8 @@ TODO LIST:
 
 - packaging (as .exe or as bundle of python like a zip)
 - tagging mp3. May want to use mutagen library for that
+- fix duplicate file naming
+- add error when ffmpeg is not present
 
 """
 
