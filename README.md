@@ -8,36 +8,40 @@ This is built heavily on yt_dlp
 
 - Use the linux app with ffmpeg, ffplay, and ffprobe in the same directory
 
+- Optionally create a shortcut
+
 ## Manual Instructions for Python Environments
 
---WINDOWS USERS--
+### --WINDOWS USERS--
 
 - Install python for command line from Microsoft Store
-   
-- Run the command python3 -m pip install yt_dlp.
 
-- If yt_dlp is installed, run the command python3 -m pip install --upgrade yt_dlp.
+Run the following commands in command prompt:
+```
+python3 -m pip install yt_dlp.
+python3 -m pip install --upgrade yt_dlp.
+cd FILE_LOCATION
+python3 Tune-Grabber.py
+```
 
-- cd into the directory with the files.
+Optionally create .bat file to automate last two steps. Sample .bat is provided
 
-- run the command python3 UI.py.
-Optionally create .bat file to automate last two steps.
+### --LINUX USERS--
 
---LINUX USERS--
+Run the following commands in the bash:
+```
+sudo apt update
+sudo apt upgrade
+sudo apt install yt-dlp
+cd FILE_LOCATION
+python3 Tune-Grabber.py
+```
 
-- sudo apt update
-
-- sudo apt upgrade
-
-- sudo apt install yt-dlp
-
-- cd into the directory with the files
-  
-- run the command python3 Tune-Grabber.py.
 Optionally create script to automate last two steps.
 
-IF you are using Ubuntu, you may need to run
-
-- sudo apt install python3-tk
-
-
+IF YOU ARE USING UBUNTU, you may need to run
+```
+sudo apt install python3-tk
+```
+This is the tkinter library, which for most Python installations is included by default, but some Ubuntu Python packages
+may not include it by default.
