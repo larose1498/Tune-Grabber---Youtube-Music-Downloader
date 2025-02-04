@@ -4,6 +4,12 @@ Downloads Youtube videos as mp3 files
 In order for this to work, you must have python 3.12 or higher (older version may work, but no guarantee).
 This is built heavily on yt_dlp
 
+## Local Executable 
+
+- Use the linux app with ffmpeg, ffplay, and ffprobe in the same directory
+
+## Manual Instructions for Python Environments
+
 --WINDOWS USERS--
 
 - Install python for command line from Microsoft Store
@@ -18,8 +24,6 @@ This is built heavily on yt_dlp
 Optionally create .bat file to automate last two steps.
 
 --LINUX USERS--
-
-Use the linux app with ffmpeg, ffplay, and ffprobe in the same directory, OR
 
 - sudo apt update
 
