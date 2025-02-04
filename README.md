@@ -19,6 +19,8 @@ Optionally create .bat file to automate last two steps.
 
 --LINUX USERS--
 
+Use the linux app with ffmpeg, ffplay, and ffprobe in the same directory, OR
+
 - sudo apt update
 
 - sudo apt upgrade
