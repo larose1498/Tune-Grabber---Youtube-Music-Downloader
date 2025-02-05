@@ -9,7 +9,10 @@ This is built heavily on yt_dlp
 ## Local Executable 
 
 - Use the linux app with ffmpeg, ffplay, and ffprobe in the same directory
+#### OR
+- Use the windows app with ffmpeg, ffplay, and ffprobe in the same directory
 
+#### AND
 - Optionally create a shortcut
 
 ## Manual Instructions for Python Environments
