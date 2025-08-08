@@ -8,12 +8,14 @@ This is built heavily on yt_dlp
 
 ## Local Executable 
 
-- Use the linux app with ffmpeg, ffplay, and ffprobe in the same directory
-#### OR
-- Use the windows app with ffmpeg, ffplay, and ffprobe in the same directory
-
-#### AND
+- Get all the files for your corresponding os
+- Get all the zip files (ffmpeg, ffplay, and ffprobe) and unzip them
+- Put all the files in the same directory of your choosing
+- Run mainfile to run the program
 - Optionally create a shortcut
+
+#### If Using Linux
+- Use chmod -x on mainfile
 
 ## Manual Instructions for Python Environments
 
