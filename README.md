@@ -52,3 +52,10 @@ sudo apt install python3-tk
 ```
 This is the tkinter library, which for most Python installations is included by default, but some Ubuntu Python packages
 may not include it by default.
+
+#### IF you want to compile this yourself in linux, you may need to run:
+
+pyinstaller mainfile.py \
+  --collect-submodules PIL \
+  --collect-data PIL --onefile
+
